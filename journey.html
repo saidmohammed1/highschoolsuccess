@@ -1,0 +1,209 @@
+<html><head><base href="https://websim.creation/highschool-planner/dashboard">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your High School Success Dashboard</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            height: 100%;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h2 {
+            color: #FFD700;
+            margin-top: 0;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background: #4CAF50;
+            width: 0%;
+            transition: width 1s ease-in-out;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #FF9F55;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background: #ff8c29;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Your High School Success Dashboard</h1>
+            <p>Welcome back, <span id="studentName">Student</span>! Here's your personalized roadmap to success.</p>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <h2>4-Year Plan</h2>
+                <canvas id="yearPlanChart"></canvas>
+                <div class="progress-bar">
+                    <div class="progress" id="yearPlanProgress"></div>
+                </div>
+                <a href="https://websim.creation/highschool-planner/4-year-plan" class="btn">View Details</a>
+            </div>
+
+            <div class="card">
+                <h2>Credit Tracker</h2>
+                <canvas id="creditChart"></canvas>
+                <p>Credits Earned: <span id="creditsEarned">0</span> / <span id="creditsRequired">24</span></p>
+                <a href="https://websim.creation/highschool-planner/credit-tracker" class="btn">Update Credits</a>
+            </div>
+
+            <div class="card">
+                <h2>Running Start</h2>
+                <p>Junior Year: <span id="juniorRunningStart">Not Started</span></p>
+                <p>Senior Year: <span id="seniorRunningStart">Not Started</span></p>
+                <a href="https://websim.creation/highschool-planner/running-start" class="btn">Explore Options</a>
+            </div>
+
+            <div class="card">
+                <h2>College Applications</h2>
+                <ul id="collegeList"></ul>
+                <a href="https://websim.creation/highschool-planner/college-apps" class="btn">Manage Applications</a>
+            </div>
+
+            <div class="card">
+                <h2>Find Your Passion</h2>
+                <p>Interests: <span id="interests">Loading...</span></p>
+                <a href="https://websim.creation/highschool-planner/interests" class="btn">Explore More</a>
+            </div>
+
+            <div class="card">
+                <h2>School Sports</h2>
+                <p>Current Sport: <span id="currentSport">None</span></p>
+                <a href="https://websim.creation/highschool-planner/sports" class="btn">Join a Team</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulated data - In a real app, this would come from a backend
+        const studentData = {
+            name: "Alex Johnson",
+            yearPlanProgress: 75,
+            creditsEarned: 18,
+            creditsRequired: 24,
+            juniorRunningStart: "In Progress",
+            seniorRunningStart: "Not Started",
+            colleges: ["State University", "Tech Institute", "Liberal Arts College"],
+            interests: ["Computer Science", "Environmental Studies", "Photography"],
+            currentSport: "Basketball"
+        };
+
+        // Update dashboard with student data
+        document.getElementById('studentName').textContent = studentData.name;
+        document.getElementById('yearPlanProgress').style.width = `${studentData.yearPlanProgress}%`;
+        document.getElementById('creditsEarned').textContent = studentData.creditsEarned;
+        document.getElementById('creditsRequired').textContent = studentData.creditsRequired;
+        document.getElementById('juniorRunningStart').textContent = studentData.juniorRunningStart;
+        document.getElementById('seniorRunningStart').textContent = studentData.seniorRunningStart;
+        document.getElementById('interests').textContent = studentData.interests.join(", ");
+        document.getElementById('currentSport').textContent = studentData.currentSport;
+
+        // Populate college list
+        const collegeList = document.getElementById('collegeList');
+        studentData.colleges.forEach(college => {
+            const li = document.createElement('li');
+            li.textContent = college;
+            collegeList.appendChild(li);
+        });
+
+        // Create Year Plan Chart
+        new Chart(document.getElementById('yearPlanChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Completed', 'Remaining'],
+                datasets: [{
+                    data: [studentData.yearPlanProgress, 100 - studentData.yearPlanProgress],
+                    backgroundColor: ['#4CAF50', 'rgba(255, 255, 255, 0.2)']
+                }]
+            },
+            options: {
+                responsive: true,
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // Create Credit Chart
+        new Chart(document.getElementById('creditChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Earned', 'Required'],
+                datasets: [{
+                    label: 'Credits',
+                    data: [studentData.creditsEarned, studentData.creditsRequired],
+                    backgroundColor: ['#4CAF50', 'rgba(255, 255, 255, 0.2)']
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: studentData.creditsRequired
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+</body></html>

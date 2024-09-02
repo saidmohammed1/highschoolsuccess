@@ -1,0 +1,246 @@
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Services | High School Success</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary-color: #4a90e2;
+    --secondary-color: #f39c12;
+    --accent-color: #2ecc71;
+    --text-color: #34495e;
+    --background-color: #f5f7fa;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+
+  header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .logo {
+    max-width: 300px;
+    margin: 0 auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  }
+
+  nav {
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  nav ul li {
+    margin: 0 1rem;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  nav ul li a:hover {
+    color: var(--primary-color);
+  }
+
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  h1, h2, h3 {
+    color: var(--primary-color);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .service-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .service-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+  }
+
+  .learn-more-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .learn-more-button:hover {
+    background-color: #27ae60;
+  }
+
+  footer {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin: 0.5rem 0;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <svg class="logo" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#4a90e2;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#f39c12;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#headerGradient)" rx="15" ry="15"/>
+      <text x="150" y="40" font-family="Poppins, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">HIGH SCHOOL SUCCESS</text>
+      <text x="150" y="70" font-family="Poppins, sans-serif" font-size="18" fill="white" text-anchor="middle">Our Services</text>
+      <path d="M20,80 Q150,20 280,80" stroke="white" stroke-width="3" fill="none"/>
+      <circle cx="150" cy="50" r="25" fill="#2ecc71"/>
+      <text x="150" y="58" font-family="Poppins, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">HS</text>
+    </svg>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="pathtosuccess.html">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="activityplan.html">Activity record</a></li>
+      <li><a href="contactrs.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1>Our Services</h1>
+    <p>At High School Success, we offer a comprehensive range of services designed to help you make the most of your high school experience and prepare for a bright future. Explore our offerings below:</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">📅</div>
+        <h3>4-Year Plan Workshop</h3>
+        <p>Craft a personalized 4-year high school plan that aligns with your goals and interests. Our expert advisors will guide you through course selection, extracurricular activities, and college preparation.</p>
+        <a href="4yearplan.html" class="learn-more-button">Learn More</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🏫</div>
+        <h3>Running Start Guidance</h3>
+        <p>Navigate the Running Start program with confidence. We'll help you understand the benefits, application process, and how to balance college and high school courses.</p>
+        <a href="runningstart.html" class="learn-more-button">Learn More</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🎭</div>
+        <h3>Extracurricular Planning</h3>
+        <p>Discover and pursue extracurricular activities that showcase your talents and passions. We'll help you find opportunities that align with your interests and enhance your college applications.</p>
+        <a href="activities.html" class="learn-more-button">Learn More</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">💼</div>
+        <h3>Internship &amp; Stipend Programs</h3>
+        <p>Gain valuable work experience and earn money with our curated list of internship and stipend programs. We'll help you find opportunities that match your career interests.</p>
+        <a href="/services/internships" class="learn-more-button">Learn More</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🎓</div>
+        <h3>College Application Support</h3>
+        <p>Navigate the college application process with confidence. Our experts will guide you through essay writing, application strategies, and scholarship opportunities.</p>
+        <a href="collegeapps.html" class="learn-more-button">Learn More</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🧭</div>
+        <h3>Career Exploration Workshops</h3>
+        <p>Discover potential career paths and learn about various industries through our interactive workshops. Gain insights from professionals and find your passion.</p>
+        <a href="passion.html" class="learn-more-button">Learn More</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 High School Success. All rights reserved. Website owned and operated by Said Mohammed.</p>
+    <p>Empowering students to create their path to success.</p>
+  </footer>
+
+  <script>
+    // Add animation to service cards
+    function animateServiceCards() {
+      const cards = document.querySelectorAll('.service-card');
+      cards.forEach((card, index) => {
+        card.style.opacity = 0;
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+        setTimeout(() => {
+          card.style.opacity = 1;
+          card.style.transform = 'translateY(0)';
+        }, 100);
+      });
+    }
+
+    // Run animation on page load
+    window.addEventListener('load', animateServiceCards);
+  </script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<html><head><base href="https://websim.creation/highschool-planner/college-apps">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Application Tips - High School Success Planner</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #00c6fb 0%, #005bea 100%);
+            color: #333;
+            height: 100%;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .card h2 {
+            color: #005bea;
+            margin-top: 0;
+        }
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #005bea;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #FF9F55;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .right::after {
+            left: -16px;
+        }
+        .content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #FF9F55;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .cta-button:hover {
+            background-color: #ff8c29;
+        }
+        #waiver-info {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e9f7fe;
+            border-radius: 5px;
+            border-left: 5px solid #00c6fb;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Master Your College Application Journey</h1>
+        
+        <div class="card">
+            <h2>Application Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="content">
+                        <h3>Junior Year - Spring</h3>
+                        <p>Start researching colleges and take standardized tests (SAT/ACT)</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content">
+                        <h3>Summer Before Senior Year</h3>
+                        <p>Draft your personal statement and prepare your resume</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="content">
+                        <h3>Senior Year - Fall</h3>
+                        <p>Finalize college list, complete applications, and submit FAFSA</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content">
+                        <h3>Senior Year - Winter</h3>
+                        <p>Submit applications, apply for scholarships, and prepare for interviews</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Application Fee Waivers</h2>
+            <p>Don't let application fees hold you back! Learn if you're eligible for fee waivers:</p>
+            <button id="waiver-btn" class="cta-button">Check Eligibility</button>
+            <div id="waiver-info">
+                <h3>You may be eligible for application fee waivers if:</h3>
+                <ul>
+                    <li>You're enrolled in or eligible for the Federal Free or Reduced Price Lunch program</li>
+                    <li>Your family income falls within Income Eligibility Guidelines</li>
+                    <li>You're enrolled in a federal, state, or local program that aids students from low-income families</li>
+                    <li>Your family receives public assistance</li>
+                    <li>You live in federally subsidized public housing or a foster home</li>
+                    <li>You are a ward of the state or an orphan</li>
+                </ul>
+                <p>Speak with your school counselor to learn more and obtain fee waivers!</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Quick Tips for Success</h2>
+            <ul>
+                <li>Start early and stay organized</li>
+                <li>Highlight your unique experiences and perspectives</li>
+                <li>Get your applications reviewed by teachers or mentors</li>
+                <li>Pay attention to deadlines - mark them on your calendar!</li>
+                <li>Don't be afraid to ask for help from counselors or teachers</li>
+            </ul>
+        </div>
+
+        <a href="https://websim.creation/highschool-planner/essay-writing" class="cta-button">Get Personal Statement Writing Tips</a>
+    </div>
+
+    <script>
+        // Animate timeline on scroll
+        function animateTimeline() {
+            gsap.from(".timeline-item", {
+                opacity: 0,
+                x: (index, target) => target.classList.contains('left') ? -50 : 50,
+                stagger: 0.3,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: ".timeline",
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    scrub: 1
+                }
+            });
+        }
+
+        // Toggle waiver info
+        const waiverBtn = document.getElementById('waiver-btn');
+        const waiverInfo = document.getElementById('waiver-info');
+
+        waiverBtn.addEventListener('click', () => {
+            if (waiverInfo.style.display === 'none' || waiverInfo.style.display === '') {
+                gsap.to(waiverInfo, {duration: 0.5, height: 'auto', opacity: 1, display: 'block', ease: 'power2.out'});
+                waiverBtn.textContent = 'Hide Eligibility Info';
+            } else {
+                gsap.to(waiverInfo, {duration: 0.5, height: 0, opacity: 0, display: 'none', ease: 'power2.in'});
+                waiverBtn.textContent = 'Check Eligibility';
+            }
+        });
+
+        // Animate elements on load
+        window.addEventListener('load', () => {
+            gsap.from(".card", {
+                opacity: 0,
+                y: 50,
+                stagger: 0.2,
+                duration: 1,
+                ease: "power2.out"
+            });
+
+            animateTimeline();
+        });
+    </script>
+</body></html>

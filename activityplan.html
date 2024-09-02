@@ -1,0 +1,302 @@
+<html><head><base href="https://websim.creation/highschool-planner/activity-planner">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High School Activity Planner - Chart Your Path to Success!</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1, h2 {
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 2em;
+            margin-top: 40px;
+        }
+        .planner {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        .year {
+            margin-bottom: 30px;
+        }
+        .semester {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .activity-slot {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 10px;
+            margin: 0 5px;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .activity-slot h4 {
+            margin: 0;
+            font-size: 1em;
+        }
+        .add-activity {
+            background: none;
+            border: 2px dashed #fff;
+            color: #fff;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .add-activity:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        #activity-modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 15px;
+            color: #333;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .tips {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        .tips ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .tips li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .tips li::before {
+            content: "💡";
+            margin-right: 10px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>High School Activity Planner</h1>
+        <p>Plan your extracurricular activities for all four years of high school. Remember, consistency and growth are key!</p>
+        
+        <div class="planner">
+            <div class="year">
+                <h2>Freshman Year</h2>
+                <div class="semester">
+                    <div class="activity-slot">
+                        <h4>Fall Semester</h4>
+                        <button class="add-activity" onclick="openModal('freshman-fall')">+ Add Activity</button>
+                    </div>
+                    <div class="activity-slot">
+                        <h4>Spring Semester</h4>
+                        <button class="add-activity" onclick="openModal('freshman-spring')">+ Add Activity</button>
+                    </div>
+                </div>
+            </div>
+            <div class="year">
+                <h2>Sophomore Year</h2>
+                <div class="semester">
+                    <div class="activity-slot">
+                        <h4>Fall Semester</h4>
+                        <button class="add-activity" onclick="openModal('sophomore-fall')">+ Add Activity</button>
+                    </div>
+                    <div class="activity-slot">
+                        <h4>Spring Semester</h4>
+                        <button class="add-activity" onclick="openModal('sophomore-spring')">+ Add Activity</button>
+                    </div>
+                </div>
+            </div>
+            <div class="year">
+                <h2>Junior Year</h2>
+                <div class="semester">
+                    <div class="activity-slot">
+                        <h4>Fall Semester</h4>
+                        <button class="add-activity" onclick="openModal('junior-fall')">+ Add Activity</button>
+                    </div>
+                    <div class="activity-slot">
+                        <h4>Spring Semester</h4>
+                        <button class="add-activity" onclick="openModal('junior-spring')">+ Add Activity</button>
+                    </div>
+                </div>
+            </div>
+            <div class="year">
+                <h2>Senior Year</h2>
+                <div class="semester">
+                    <div class="activity-slot">
+                        <h4>Fall Semester</h4>
+                        <button class="add-activity" onclick="openModal('senior-fall')">+ Add Activity</button>
+                    </div>
+                    <div class="activity-slot">
+                        <h4>Spring Semester</h4>
+                        <button class="add-activity" onclick="openModal('senior-spring')">+ Add Activity</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tips">
+            <h2>Tips for Effective Activity Planning</h2>
+            <ul>
+                <li>Start early and try different activities to find your passions</li>
+                <li>Aim for depth over breadth - colleges value commitment and growth</li>
+                <li>Take on leadership roles as you progress through high school</li>
+                <li>Balance your activities across different areas (e.g., academics, sports, arts, community service)</li>
+                <li>Don't overcommit - quality is more important than quantity</li>
+                <li>Keep track of your accomplishments and hours spent on each activity</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="activity-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add Activity</h2>
+            <form id="activity-form">
+                <input type="hidden" id="semester" name="semester">
+                <input type="text" id="activity-name" name="activity-name" placeholder="Activity Name" required>
+                <select id="activity-type" name="activity-type" required>
+                    <option value="">Select Activity Type</option>
+                    <option value="sports">Sports</option>
+                    <option value="clubs">Clubs</option>
+                    <option value="volunteering">Volunteering</option>
+                    <option value="arts">Arts & Music</option>
+                    <option value="leadership">Leadership</option>
+                    <option value="academic">Academic Competitions</option>
+                    <option value="other">Other</option>
+                </select>
+                <input type="number" id="hours-per-week" name="hours-per-week" placeholder="Hours per Week" required min="1" max="40">
+                <button type="submit">Add Activity</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('activity-modal');
+        const closeBtn = document.getElementsByClassName('close')[0];
+        const form = document.getElementById('activity-form');
+
+        function openModal(semester) {
+            modal.style.display = 'block';
+            document.getElementById('semester').value = semester;
+        }
+
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        form.onsubmit = function(e) {
+            e.preventDefault();
+            const semester = document.getElementById('semester').value;
+            const activityName = document.getElementById('activity-name').value;
+            const activityType = document.getElementById('activity-type').value;
+            const hoursPerWeek = document.getElementById('hours-per-week').value;
+
+            const activitySlot = document.querySelector(`.activity-slot:has(button[onclick="openModal('${semester}')"])`);
+            const activityElement = document.createElement('div');
+            activityElement.innerHTML = `
+                <strong>${activityName}</strong><br>
+                Type: ${activityType}<br>
+                Hours/Week: ${hoursPerWeek}
+            `;
+            activitySlot.insertBefore(activityElement, activitySlot.lastChild);
+
+            modal.style.display = 'none';
+            form.reset();
+        }
+
+        // Add animation to year sections
+        const years = document.querySelectorAll('.year');
+        years.forEach((year, index) => {
+            year.style.animation = `fadeIn 0.5s ease ${index * 0.2}s forwards`;
+        });
+
+        // Add this CSS for the fadeIn animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .year {
+                opacity: 0;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body></html>

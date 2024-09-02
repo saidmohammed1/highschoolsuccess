@@ -1,0 +1,209 @@
+<html><head><base href="https://websim.creation/highschool-planner/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High School Success Planner</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: #fff;
+            height: 100%;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #fff;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .milestone {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .milestone::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: #fff;
+            border: 4px solid #FF9F55;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #fff;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #fff;
+        }
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #fff;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #fff transparent transparent;
+        }
+        .right::after {
+            left: -16px;
+        }
+        .content {
+            padding: 20px 30px;
+            background-color: #fff;
+            position: relative;
+            border-radius: 6px;
+            color: #333;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #FF9F55;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #ff8c29;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Path to College Success Starts Here!</h1>
+        <div class="timeline">
+            <div class="milestone left">
+                <div class="content">
+                    <h2>Freshman Year</h2>
+                    <p>Explore your passions, join clubs, and start strong academically!</p>
+                    <svg class="floating-icon" width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L1 21H23L12 2Z" stroke="#FF9F55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 18H12.01" stroke="#FF9F55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 9V13" stroke="#FF9F55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="milestone right">
+                <div class="content">
+                    <h2>Sophomore Year</h2>
+                    <p>Take challenging courses, consider AP classes, and excel in sports!</p>
+                    <svg class="floating-icon" width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 15C15.866 15 19 11.866 19 8C19 4.13401 15.866 1 12 1C8.13401 1 5 4.13401 5 8C5 11.866 8.13401 15 12 15Z" stroke="#FF9F55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8.21 13.89L7 23L12 20L17 23L15.79 13.88" stroke="#FF9F55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="milestone left">
+                <div class="content">
+                    <h2>Junior Year</h2>
+                    <p>Start Running Start, prep for SAT/ACT, and research colleges!</p>
+                    <svg class="floating-icon" width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 8V12L15 15" stroke="#FF9F55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M3.05 11C3.3 7.4 5.5 4.3 8.9 3.1C12.3 1.9 16 2.9 18.4 5.8C20.8 8.7 21.2 12.7 19.4 16C17.6 19.3 14 21.3 10.2 21C6.4 20.7 3.2 18.1 2.1 14.5" stroke="#FF9F55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M3 14V11H6" stroke="#FF9F55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="milestone right">
+                <div class="content">
+                    <h2>Senior Year</h2>
+                    <p>Complete Running Start, apply to colleges, and secure financial aid!</p>
+                    <svg class="floating-icon" width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 2L11 13" stroke="#FF9F55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="#FF9F55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="https://websim.creation/highschool-planner/get-started" class="cta-button">Start Your Journey Now!</a>
+        </div>
+    </div>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray(".milestone").forEach((milestone, i) => {
+            gsap.from(milestone, {
+                opacity: 0,
+                y: 100,
+                scrollTrigger: {
+                    trigger: milestone,
+                    start: "top bottom-=100",
+                    end: "top center",
+                    scrub: true
+                }
+            });
+        });
+
+        gsap.from(".floating-icon", {
+            y: 20,
+            opacity: 0,
+            duration: 1,
+            ease: "power2.out",
+            stagger: 0.2
+        });
+
+        gsap.to(".floating-icon", {
+            y: -20,
+            duration: 2,
+            ease: "power1.inOut",
+            yoyo: true,
+            repeat: -1
+        });
+    </script>
+</body></html>

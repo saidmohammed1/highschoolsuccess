@@ -1,0 +1,230 @@
+<html><head><base href="https://websim.creation/highschool-planner/essay-writing">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Your College Essay - High School Success Planner</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            height: 100%;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1 {
+            font-size: 2.8em;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .card h2 {
+            color: #764ba2;
+            margin-top: 0;
+        }
+        .essay-structure {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .essay-part {
+            flex-basis: calc(33% - 20px);
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f0f4ff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .essay-part h3 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        .tips-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .tips-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        .tips-list li::before {
+            content: '✏️';
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+        .interactive-prompt {
+            background-color: #e9f7fe;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        #prompt-generator {
+            margin-top: 20px;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #764ba2;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .cta-button:hover {
+            background-color: #5a387d;
+        }
+        #writing-timer {
+            font-size: 2em;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Craft Your Winning College Essay</h1>
+        
+        <div class="card">
+            <h2>Essay Structure Blueprint</h2>
+            <div class="essay-structure">
+                <div class="essay-part">
+                    <h3>Introduction</h3>
+                    <p>Hook the reader with a compelling opening. Introduce your main theme or experience.</p>
+                </div>
+                <div class="essay-part">
+                    <h3>Body Paragraphs</h3>
+                    <p>Develop your story with specific examples. Show personal growth and reflection.</p>
+                </div>
+                <div class="essay-part">
+                    <h3>Conclusion</h3>
+                    <p>Reflect on the significance of your experience. Connect it to your future goals.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Essay Writing Power Tips</h2>
+            <ul class="tips-list">
+                <li>Be authentic - let your true voice shine through</li>
+                <li>Show, don't tell - use vivid details and examples</li>
+                <li>Focus on a specific moment or experience</li>
+                <li>Demonstrate personal growth and self-reflection</li>
+                <li>Proofread carefully and get feedback from others</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Interactive Essay Prompt Generator</h2>
+            <p>Stuck on what to write about? Generate a unique prompt to spark your creativity:</p>
+            <div class="interactive-prompt">
+                <p id="essay-prompt">Click the button below to generate a prompt...</p>
+            </div>
+            <button id="prompt-generator" class="cta-button">Generate Prompt</button>
+        </div>
+
+        <div class="card">
+            <h2>Timed Writing Exercise</h2>
+            <p>Challenge yourself with a 15-minute free writing session based on the generated prompt:</p>
+            <div id="writing-timer">15:00</div>
+            <button id="start-timer" class="cta-button">Start Writing</button>
+        </div>
+
+        <a href="https://websim.creation/highschool-planner/college-apps" class="cta-button">Back to College Application Tips</a>
+    </div>
+
+    <script>
+        const prompts = [
+            "Describe a moment when you overcame a significant challenge. How did it shape you?",
+            "What's a belief or idea you once held strongly but have since changed your mind about?",
+            "Reflect on a time when you made a mistake. What did you learn from it?",
+            "Describe a place or environment where you feel perfectly content. Why does it hold special meaning for you?",
+            "Discuss an accomplishment or event that sparked personal growth and a new understanding of yourself or others.",
+            "What's the most valuable lesson you've learned outside the classroom?",
+            "Describe a topic, idea, or concept you find so engaging that it makes you lose all track of time.",
+            "Reflect on a time when you questioned or challenged a belief or idea. What prompted your thinking?",
+            "Discuss an issue of personal, local, national, or international concern and its importance to you.",
+            "Describe a problem you've solved or would like to solve. It can be a personal challenge or a larger issue."
+        ];
+
+        const promptBtn = document.getElementById('prompt-generator');
+        const promptText = document.getElementById('essay-prompt');
+        const startTimerBtn = document.getElementById('start-timer');
+        const timerDisplay = document.getElementById('writing-timer');
+
+        promptBtn.addEventListener('click', () => {
+            const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
+            gsap.to(promptText, {opacity: 0, duration: 0.5, onComplete: () => {
+                promptText.textContent = randomPrompt;
+                gsap.to(promptText, {opacity: 1, duration: 0.5});
+            }});
+        });
+
+        let timer;
+        let timeLeft = 900; // 15 minutes in seconds
+
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            if (timeLeft === 0) {
+                clearInterval(timer);
+                startTimerBtn.textContent = "Time's up!";
+                startTimerBtn.disabled = true;
+            } else {
+                timeLeft--;
+            }
+        }
+
+        startTimerBtn.addEventListener('click', () => {
+            if (startTimerBtn.textContent === "Start Writing") {
+                timer = setInterval(updateTimer, 1000);
+                startTimerBtn.textContent = "Stop Writing";
+            } else {
+                clearInterval(timer);
+                startTimerBtn.textContent = "Start Writing";
+                timeLeft = 900;
+                updateTimer();
+            }
+        });
+
+        // Animate elements on load
+        window.addEventListener('load', () => {
+            gsap.from(".card", {
+                opacity: 0,
+                y: 50,
+                stagger: 0.2,
+                duration: 1,
+                ease: "power2.out"
+            });
+
+            gsap.from(".essay-part", {
+                opacity: 0,
+                scale: 0.8,
+                stagger: 0.2,
+                duration: 1,
+                ease: "back.out(1.7)"
+            });
+        });
+    </script>
+</body></html>

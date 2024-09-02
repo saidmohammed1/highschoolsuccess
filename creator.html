@@ -1,0 +1,173 @@
+<html><head><base href="https://websim.creation/highschool-planner/get-started">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started - High School Success Planner</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: #fff;
+            height: 100%;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .card h2 {
+            color: #FFD700;
+            margin-top: 0;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], select {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+        input[type="submit"] {
+            background: #FF9F55;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background: #ff8c29;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        .progress {
+            width: 0%;
+            height: 100%;
+            background: #FFD700;
+            transition: width 0.5s ease;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Let's Get Started on Your Success Journey!</h1>
+        
+        <div class="card">
+            <h2>Personal Information</h2>
+            <form id="personalInfo">
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="grade">Current Grade:</label>
+                    <select id="grade" name="grade" required>
+                        <option value="">Select your grade</option>
+                        <option value="9">Freshman (9th)</option>
+                        <option value="10">Sophomore (10th)</option>
+                        <option value="11">Junior (11th)</option>
+                        <option value="12">Senior (12th)</option>
+                    </select>
+                </div>
+                <input type="submit" value="Next">
+            </form>
+        </div>
+        
+        <div class="card" id="academicCard" style="display: none;">
+            <h2>Academic Interests</h2>
+            <form id="academicInterests">
+                <div class="form-group">
+                    <label for="subjects">Favorite Subjects:</label>
+                    <input type="text" id="subjects" name="subjects" placeholder="e.g., Math, Science, History">
+                </div>
+                <div class="form-group">
+                    <label for="career">Career Interests:</label>
+                    <input type="text" id="career" name="career" placeholder="e.g., Doctor, Engineer, Artist">
+                </div>
+                <input type="submit" value="Next">
+            </form>
+        </div>
+        
+        <div class="card" id="extracurricularCard" style="display: none;">
+            <h2>Extracurricular Activities</h2>
+            <form id="extracurricular">
+                <div class="form-group">
+                    <label for="activities">Current Activities:</label>
+                    <input type="text" id="activities" name="activities" placeholder="e.g., Soccer, Debate Club, Volunteering">
+                </div>
+                <div class="form-group">
+                    <label for="interests">Interests to Explore:</label>
+                    <input type="text" id="interests" name="interests" placeholder="e.g., Photography, Coding, Music">
+                </div>
+                <input type="submit" value="Complete">
+            </form>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress" id="progressBar"></div>
+        </div>
+    </div>
+
+    <script>
+        let progress = 0;
+        const forms = ['personalInfo', 'academicInterests', 'extracurricular'];
+        const cards = ['academicCard', 'extracurricularCard'];
+        
+        forms.forEach((formId, index) => {
+            document.getElementById(formId).addEventListener('submit', function(e) {
+                e.preventDefault();
+                progress += 33.33;
+                document.getElementById('progressBar').style.width = `${progress}%`;
+                
+                if (cards[index]) {
+                    gsap.to(`#${cards[index]}`, {duration: 0.5, opacity: 1, display: 'block', ease: 'power2.inOut'});
+                }
+                
+                if (index === forms.length - 1) {
+                    alert('Thank you for completing the form! Your personalized high school success plan is being generated.');
+                    window.location.href = 'https://websim.creation/highschool-planner/dashboard';
+                }
+            });
+        });
+
+        gsap.from('.card', {duration: 1, y: 50, opacity: 0, stagger: 0.3, ease: 'power3.out'});
+    </script>
+</body></html>

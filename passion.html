@@ -1,0 +1,234 @@
+<html><head><base href="https://websim.creation/highschool-planner/passion-finder">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passion Finder - Discover Your Path</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            color: #333;
+            height: 100%;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1 {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .quiz-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .option {
+            background: #fff;
+            border: 2px solid #4ECDC4;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .option:hover {
+            background: #4ECDC4;
+            color: #fff;
+        }
+        .selected {
+            background: #4ECDC4;
+            color: #fff;
+        }
+        #next-btn, #result-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto 0;
+            padding: 15px;
+            background: #FF6B6B;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        #next-btn:hover, #result-btn:hover {
+            background: #ff4757;
+        }
+        #result {
+            display: none;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        #result h2 {
+            color: #FF6B6B;
+            margin-bottom: 20px;
+        }
+        #passion-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #ddd;
+            border-radius: 5px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        .progress {
+            width: 0;
+            height: 100%;
+            background: #FF6B6B;
+            transition: width 0.5s ease;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Discover Your Passion</h1>
+        <div class="quiz-container">
+            <div id="question-container">
+                <p class="question" id="question"></p>
+                <div class="options" id="options"></div>
+            </div>
+            <button id="next-btn">Next Question</button>
+            <button id="result-btn" style="display: none;">See Your Result</button>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+        <div id="result">
+            <i id="passion-icon" class="fas"></i>
+            <h2>Your Passion:</h2>
+            <p id="passion-result"></p>
+            <p id="passion-description"></p>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "What activity do you enjoy most in your free time?",
+                options: ["Creating art or music", "Solving puzzles or problems", "Helping others", "Exploring nature"]
+            },
+            {
+                question: "Which subject do you find most interesting in school?",
+                options: ["Art or Music", "Math or Science", "Social Studies or Psychology", "Physical Education or Biology"]
+            },
+            {
+                question: "What type of books or movies do you prefer?",
+                options: ["Creative or artistic", "Mystery or sci-fi", "Biographies or self-help", "Nature documentaries or adventure"]
+            },
+            {
+                question: "How do you prefer to work on projects?",
+                options: ["Independently, using creativity", "In a team, solving complex problems", "Collaboratively, helping others", "Hands-on, in practical settings"]
+            },
+            {
+                question: "What kind of future career excites you the most?",
+                options: ["Artist, musician, or designer", "Engineer, scientist, or programmer", "Teacher, counselor, or social worker", "Environmentalist, athlete, or explorer"]
+            }
+        ];
+
+        let currentQuestion = 0;
+        let answers = [];
+
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const nextBtn = document.getElementById('next-btn');
+        const resultBtn = document.getElementById('result-btn');
+        const resultEl = document.getElementById('result');
+        const progressEl = document.getElementById('progress');
+
+        function loadQuestion() {
+            const question = questions[currentQuestion];
+            questionEl.textContent = question.question;
+            optionsEl.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.classList.add('option');
+                button.textContent = option;
+                button.addEventListener('click', () => selectOption(index));
+                optionsEl.appendChild(button);
+            });
+            updateProgress();
+        }
+
+        function selectOption(index) {
+            const options = optionsEl.children;
+            for (let option of options) {
+                option.classList.remove('selected');
+            }
+            options[index].classList.add('selected');
+            answers[currentQuestion] = index;
+            nextBtn.style.display = 'block';
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            progressEl.style.width = `${progress}%`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (answers[currentQuestion] === undefined) {
+                alert('Please select an option before proceeding.');
+                return;
+            }
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                nextBtn.style.display = 'none';
+                resultBtn.style.display = 'block';
+            }
+        });
+
+        resultBtn.addEventListener('click', showResult);
+
+        function showResult() {
+            const passionCategories = ["Creative Arts", "Science and Technology", "Social Services", "Nature and Adventure"];
+            const passionIcons = ["fa-palette", "fa-atom", "fa-hands-helping", "fa-mountain"];
+            const passionDescriptions = [
+                "You have a natural inclination towards creative expression. Consider exploring careers in art, music, design, or other creative fields.",
+                "Your passion lies in understanding how things work and solving complex problems. Look into careers in engineering, research, or technology.",
+                "You find fulfillment in helping others and making a positive impact. Consider careers in teaching, counseling, or social work.",
+                "Your passion is closely tied to the natural world and physical activities. Explore careers in environmental science, sports, or outdoor education."
+            ];
+
+            let scores = [0, 0, 0, 0];
+            answers.forEach(answer => scores[answer]++);
+            
+            let maxScore = Math.max(...scores);
+            let passionIndex = scores.indexOf(maxScore);
+
+            document.getElementById('passion-icon').className = `fas ${passionIcons[passionIndex]}`;
+            document.getElementById('passion-result').textContent = passionCategories[passionIndex];
+            document.getElementById('passion-description').textContent = passionDescriptions[passionIndex];
+
+            resultEl.style.display = 'block';
+            document.querySelector('.quiz-container').style.display = 'none';
+        }
+
+        loadQuestion();
+    </script>
+</body></html>

@@ -1,0 +1,257 @@
+<html><head><base href="https://websim.creation/highschool-planner/running-start">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Running Start Guide - High School Success Planner</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6e48aa, #9d50bb);
+            color: #fff;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        h1 {
+            font-size: 2.5em;
+        }
+        h2 {
+            font-size: 2em;
+            color: #FFD700;
+        }
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #FFD700;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: #FFD700;
+            border: 4px solid #FF9F55;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #FFD700;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #FFD700;
+        }
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #FFD700;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #FFD700 transparent transparent;
+        }
+        .right::after {
+            left: -16px;
+        }
+        .content {
+            padding: 20px 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            position: relative;
+            border-radius: 6px;
+            backdrop-filter: blur(5px);
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #FFD700;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 15px;
+        }
+        .cta-button:hover {
+            background-color: #FFC300;
+            transform: scale(1.05);
+        }
+        #benefits {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            width: calc(33% - 20px);
+            min-width: 250px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        .benefit-card h3 {
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Running Start: Your Gateway to College Success</h1>
+        
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="content">
+                    <h2>Sophomore Year: Prepare</h2>
+                    <p>Research Running Start programs and eligibility requirements. Discuss with your school counselor and parents.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="content">
+                    <h2>Junior Year: Dive In</h2>
+                    <p>Apply for Running Start, take placement tests, and start your first college classes while still in high school.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="content">
+                    <h2>Senior Year: Excel</h2>
+                    <p>Continue with Running Start, potentially earning your Associate's degree alongside your high school diploma.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="content">
+                    <h2>Graduation: Celebrate</h2>
+                    <p>Graduate with a head start on your college education and significant cost savings!</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>Benefits of Running Start</h2>
+        <div id="benefits">
+            <div class="benefit-card">
+                <h3>Save Money</h3>
+                <p>Earn college credits for free or at a reduced cost while still in high school.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Save Time</h3>
+                <p>Get a head start on your college degree, potentially graduating earlier.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Challenge Yourself</h3>
+                <p>Experience college-level coursework and build your academic confidence.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Explore Interests</h3>
+                <p>Try out different subjects and potential majors before committing to a college.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Boost Your Application</h3>
+                <p>Strengthen your college applications with proven college-level performance.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Smooth Transition</h3>
+                <p>Ease into college life while still having high school support.</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="https://websim.creation/highschool-planner/running-start/apply" class="cta-button">Start Your Running Start Journey</a>
+        </div>
+    </div>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Timeline animation
+        gsap.utils.toArray('.timeline-item').forEach((item, index) => {
+            gsap.from(item, {
+                opacity: 0,
+                x: index % 2 === 0 ? -50 : 50,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top 80%',
+                    end: 'bottom 20%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        // Benefits cards animation
+        gsap.from('.benefit-card', {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: '#benefits',
+                start: 'top 80%',
+                end: 'bottom 20%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        // CTA button animation
+        gsap.from('.cta-button', {
+            opacity: 0,
+            scale: 0.5,
+            duration: 1,
+            scrollTrigger: {
+                trigger: '.cta-button',
+                start: 'top 90%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+    </script>
+</body></html>

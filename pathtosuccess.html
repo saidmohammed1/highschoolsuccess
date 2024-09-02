@@ -1,0 +1,183 @@
+<html><head><base href="https://websim.creation/highschool-planner/get-started">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started - High School Success Planner</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            color: #fff;
+            height: 100%;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            width: calc(33% - 20px);
+            min-width: 250px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .card h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+        .card p {
+            font-size: 1em;
+            line-height: 1.6;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #FFD700;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 15px;
+        }
+        .cta-button:hover {
+            background-color: #FFC300;
+            transform: scale(1.05);
+        }
+        #progress-tracker {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        #progress-bar {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        #progress {
+            width: 0%;
+            height: 30px;
+            background-color: #4CAF50;
+            border-radius: 10px;
+            transition: width 0.5s ease-in-out;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Get Started on Your Path to Success!</h1>
+        <div class="card-container">
+            <div class="card">
+                <h2>Credit Tracker</h2>
+                <p>Stay on top of your graduation requirements and Running Start credits with our easy-to-use credit tracking system.</p>
+                <a href="https://websim.creation/highschool-planner/credit-tracker" class="cta-button">Track Credits</a>
+            </div>
+            <div class="card">
+                <h2>College Applications</h2>
+                <p>Navigate the college application process with ease. Find application fee waivers and get tips for standout essays.</p>
+                <a href="https://websim.creation/highschool-planner/college-apps" class="cta-button">Apply Now</a>
+            </div>
+            <div class="card">
+                <h2>Passion Finder</h2>
+                <p>Discover your interests and potential career paths with our interactive passion finder quiz and resources.</p>
+                <a href="https://websim.creation/highschool-planner/passion-finder" class="cta-button">Find Your Passion</a>
+            </div>
+            <div class="card">
+                <h2>Sports & Activities</h2>
+                <p>Explore school sports and extracurricular activities that can boost your college applications and personal growth.</p>
+                <a href="https://websim.creation/highschool-planner/activities" class="cta-button">Get Involved</a>
+            </div>
+            <div class="card">
+                <h2>Running Start Guide</h2>
+                <p>Learn how to make the most of the Running Start program during your junior and senior years.</p>
+                <a href="https://websim.creation/highschool-planner/running-start" class="cta-button">Start Early</a>
+            </div>
+            <div class="card">
+                <h2>Success Stories</h2>
+                <p>Get inspired by real success stories from students who've used our planner to achieve their college dreams.</p>
+                <a href="https://websim.creation/highschool-planner/success-stories" class="cta-button">Read Stories</a>
+            </div>
+        </div>
+        <div id="progress-tracker">
+            <h2>Your Progress</h2>
+            <p>Track your journey to college success!</p>
+            <div id="progress-bar">
+                <div id="progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animate cards on page load
+        gsap.from(".card", {
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+
+        // Progress bar animation
+        let progress = 0;
+        const progressBar = document.getElementById('progress');
+
+        function updateProgress() {
+            if (progress < 100) {
+                progress += Math.random() * 5;
+                progress = Math.min(progress, 100);
+                progressBar.style.width = progress + '%';
+                requestAnimationFrame(updateProgress);
+            }
+        }
+
+        // Start progress animation when scrolled into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    updateProgress();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(document.getElementById('progress-tracker'));
+
+        // Hover effect for cards
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, { scale: 1.05, duration: 0.3 });
+            });
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, { scale: 1, duration: 0.3 });
+            });
+        });
+    </script>
+</body></html>
